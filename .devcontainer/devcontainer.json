@@ -1,0 +1,19 @@
+{
+  "name": "SpringJPA Dev Container",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "mvn -DskipTests package",
+  "forwardPorts": [8080, 3306],
+  "remoteUser": "vscode",
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "pivotal.vscode-spring-boot",
+    "ms-azuretools.vscode-docker",
+    "cweijan.vscode-mysql-client2"
+  ]
+}
