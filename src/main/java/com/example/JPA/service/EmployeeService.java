@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService implements CommandLineRunner {
@@ -31,5 +32,23 @@ public class EmployeeService implements CommandLineRunner {
         }
 
         EmployeeRepository.saveAll(employeeList);
+    }
+
+    // CRUD Methods
+    public Employee saveEmployee(Employee employee) {
+        return EmployeeRepository.save(employee);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return EmployeeRepository.findAll();
+    }
+
+    public Employee getEmployeeById(int id) {
+        Optional<Employee> employee = EmployeeRepository.findById(id);
+        return employee.orElse(null);
+    }
+
+    public void deleteEmployee(int id) {
+        EmployeeRepository.deleteById(id);
     }
 }
